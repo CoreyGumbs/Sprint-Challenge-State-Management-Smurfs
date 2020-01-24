@@ -1,8 +1,5 @@
 import { FETCH_DATA, FETCH_DATA_SUCCESS, FETCH_DATA_FAILURE, POST_DATA, POST_DATA_SUCCESS, POST_DATA_FAILURE } from '../actions/index';
 
-
-let id = 1;
-
 export const initiialState = {
     isLoading: false,
     data: [],
@@ -52,13 +49,7 @@ export const addSmurfReducer = (state = addSmurfReducer, action) => {
         case POST_DATA_SUCCESS: 
             return{
                 ...state,
-                isLoading: !state.isLoading,
-                data: {
-                    id: id++,
-                    name: action.payload.name,
-                    age: action.payload.age,
-                    height: `${action.payload.height}cm`
-                }
+                isLoading: !state.isLoading
             }
         case POST_DATA_FAILURE:
             return{

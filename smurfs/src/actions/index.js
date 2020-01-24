@@ -25,7 +25,13 @@ export const fetchSmurfData = () => {
 export const addNewSmurf = smurf => {
     return dispatch => {
         dispatch({ type: POST_DATA});
-        axios.post('http://localhost:3333/smurfs');
+        console.log(smurf);
+        axios.post('http://localhost:3333/smurfs',
+        {})
+        .then(res => {
+            console.log(res);
+        })
+        .catch(err => console.log(err));
     }
 }
 

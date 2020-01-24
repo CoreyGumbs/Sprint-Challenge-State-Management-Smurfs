@@ -5,10 +5,12 @@ const AddSmurf = () =>{
     const[name, setName] =  useState('');
     const[age, setAge] =  useState('');
     const[height, setHeight] = useState ('');
+    const[id, setID] = useState(1);
 
     const handleSubmit = e => {
         e.preventDefault();
         const obj = {
+            id: id++,
             name: name,
             age: age,
             height: height
