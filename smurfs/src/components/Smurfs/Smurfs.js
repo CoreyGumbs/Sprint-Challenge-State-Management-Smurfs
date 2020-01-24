@@ -32,8 +32,8 @@ const Smurfs = (props) => {
 
 const mapStateToProps =  state => {
     return{
-        isLoading: state.isLoading,
-        data: state.data
+        isLoading: state.smurfData.isLoading,
+        data: state.smurfData.data
     }
 }
 

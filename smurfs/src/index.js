@@ -6,11 +6,11 @@ import logger from 'redux-logger';
 import thunk from 'redux-thunk';
 import "./index.css";
 
-import { smurfReducer } from './reducers/index';
+import combinedReducer from './reducers/combineReducers';
 
 import App from "./components/App";
 
-const store = createStore(smurfReducer, applyMiddleware(thunk, logger));
+const store = createStore(combinedReducer, applyMiddleware(thunk, logger));
 console.log(store.getState());
 
 ReactDOM.render(
