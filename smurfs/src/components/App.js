@@ -1,11 +1,12 @@
-import React, { Component } from "react";
+import React from "react";
 import "./App.css";
 
 import Smurfs from './Smurfs/Smurfs';
-class App extends Component {
-  render() {
+
+const App = () => {
+
     return (
-      <div className="App">
+      <div className="App" >
         <h1>SMURFS! 2.0 W/ Redux</h1>
         <div>Welcome to your state management version of Smurfs!</div>
         <div>Start inside of your `src/index.js` file!</div>
@@ -13,7 +14,8 @@ class App extends Component {
         <Smurfs />
       </div>
     );
-  }
 }
+
+
 
 export default App;
