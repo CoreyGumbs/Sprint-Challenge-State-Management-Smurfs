@@ -4,3 +4,10 @@ export const FETCH_DATA_FAILURE = 'FETCH_DATA_FAILURE';
 export const POST_DATA = 'POST_DATA';
 export const POST_DATA_SUCCESS = 'POST_DATA_SUCCESS';
 export const POST_DATA_FAILURE = 'POST_DATA_FAILURE';
+
+
+export const fetchData = () => {
+    return dispatch => {
+        
+    }
+}
