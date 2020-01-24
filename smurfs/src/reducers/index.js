@@ -34,7 +34,6 @@ export const smurfReducer = (state = initiialState, action) => {
 
 export const  addSmurfState = {
     isLoading: false,
-    data: null,
     error: ''
 }
 

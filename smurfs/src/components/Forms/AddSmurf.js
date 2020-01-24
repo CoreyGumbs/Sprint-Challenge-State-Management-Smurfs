@@ -1,26 +1,38 @@
 import React, {useState} from 'react';
 import {connect} from 'react-redux';
+import Loader from 'react-loader-spinner';
 
-const AddSmurf = () =>{
+import { addNewSmurf }  from '../../actions/index';
+
+const AddSmurf = (props) =>{
     const[name, setName] =  useState('');
     const[age, setAge] =  useState('');
     const[height, setHeight] = useState ('');
-    const[id, setID] = useState(1);
+    let [id] = useState(1);
 
     const handleSubmit = e => {
         e.preventDefault();
-        const obj = {
+    
+        const smurf = {
             id: id++,
             name: name,
             age: age,
-            height: height
+            height: `${height}cm`
         }
 
-        console.log(obj);
+        props.addNewSmurf(smurf);
+
     }
+    console.log(props);
 
     return(
         <div className="smurf-form-container">
+            {props.isLoading && 
+               <Loader type="Puff" color="#00BFFF" height={100} width={100} timeout={3000} //3 secs
+            />
+            }
+
+            {!props.isLoading &&
             <form  className="smurf-add-form" onSubmit={handleSubmit}>
                 <label htmlFor="" className="smurf-form-label">
                     Add Name: 
@@ -38,6 +50,7 @@ const AddSmurf = () =>{
                     Submit
                 </button>
             </form>
+            }
         </div>
     )
 }
@@ -46,4 +59,4 @@ const mapStateToProps = state => {
         isLoading: state.addSmurfData.isLoading
     }
 }
-export default connect(mapStateToProps, {})(AddSmurf);
+export default connect(mapStateToProps, {addNewSmurf})(AddSmurf);

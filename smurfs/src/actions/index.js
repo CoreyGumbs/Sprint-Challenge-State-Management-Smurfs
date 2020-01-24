@@ -27,11 +27,20 @@ export const addNewSmurf = smurf => {
         dispatch({ type: POST_DATA});
         console.log(smurf);
         axios.post('http://localhost:3333/smurfs',
-        {})
+        {
+            id: smurf.id,
+            name: smurf.name,
+            age: smurf.age,
+            height: smurf.height
+        })
         .then(res => {
+            dispatch({ type: POST_DATA_SUCCESS});
             console.log(res);
         })
-        .catch(err => console.log(err));
+        .catch(err => {
+            dispatch({ type: POST_DATA_FAILURE});
+            console.log(err)
+        });
     }
 }
 
