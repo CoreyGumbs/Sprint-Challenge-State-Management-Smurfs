@@ -4,6 +4,8 @@ import Loader from 'react-loader-spinner';
 
 import { fetchSmurfData } from '../../actions/index';
 
+import Smurf from './Smurf';
+
 const Smurfs = (props) => {
 
     useEffect(()=> {
@@ -17,6 +19,13 @@ const Smurfs = (props) => {
             />
             }
             <h1>Smurfs Page</h1>
+            {
+                props.data.map((smurf, idx) => (
+                    <div className="smurf-container" key={idx}>
+                        <Smurf name={smurf.name} age={smurf.age} height={smurf.height} />
+                    </div>
+                ))
+            }
         </div>
     );
 }
