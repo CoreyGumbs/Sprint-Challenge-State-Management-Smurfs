@@ -1,4 +1,5 @@
 import React from "react";
+import {connect} from "react-redux";
 import "./App.css";
 
 import AddSmurf from './Forms/AddSmurf';
@@ -18,6 +19,10 @@ const App = () => {
     );
 }
 
+const mapToStateProps = state => {
+    return {
+      data: state.smurfData.data
+    }
+}
 
-
-export default App;
+export default connect(mapToStateProps, {})(App);

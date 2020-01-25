@@ -1,4 +1,8 @@
-import { FETCH_DATA, FETCH_DATA_SUCCESS, FETCH_DATA_FAILURE, POST_DATA, POST_DATA_SUCCESS, POST_DATA_FAILURE } from '../actions/index';
+import { 
+    FETCH_DATA, FETCH_DATA_SUCCESS, FETCH_DATA_FAILURE, 
+    POST_DATA, POST_DATA_SUCCESS, POST_DATA_FAILURE, DELETE_DATA, 
+    DELETE_DATA_SUCCESS, DELETE_DATA_FAILURE
+} from '../actions/index';
 
 export const initiialState = {
     isLoading: false,
@@ -25,6 +29,16 @@ export const smurfReducer = (state = initiialState, action) => {
                 ...state,
                 errors: action.payload.error
             }
+        case POST_DATA_SUCCESS: 
+            return {
+                ...state,
+                data: action.payload.data
+            }
+        case DELETE_DATA:
+            return {
+                ...state,
+                isLoading: !state.isLoading
+            }
         default:
             return state;
     }
@@ -37,7 +51,7 @@ export const  addSmurfState = {
     error: ''
 }
 
-export const addSmurfReducer = (state = addSmurfReducer, action) => {
+export const addSmurfReducer = (state = addSmurfState, action) => {
 
     switch(action){
         case POST_DATA: 

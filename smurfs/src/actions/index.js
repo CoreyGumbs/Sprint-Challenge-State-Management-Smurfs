@@ -6,6 +6,9 @@ export const FETCH_DATA_FAILURE = 'FETCH_DATA_FAILURE';
 export const POST_DATA = 'POST_DATA';
 export const POST_DATA_SUCCESS = 'POST_DATA_SUCCESS';
 export const POST_DATA_FAILURE = 'POST_DATA_FAILURE';
+export const DELETE_DATA = 'DELETE_DATA';
+export const DELETE_DATA_SUCCESS = "DELETE_DATA_SUCCESS";
+export const DELETE_DATA_FAILURE = "DELETE_DATA_FAILURE";
 
 
 export const fetchSmurfData = () => {
@@ -14,7 +17,7 @@ export const fetchSmurfData = () => {
         axios.get('http://localhost:3333/smurfs')
         .then(res => {
             dispatch({ type: FETCH_DATA_SUCCESS, payload: { data: res.data}});
-            console.log(res.data);
+            console.log('Fetched: ',  res.data);
         })
         .catch(err => {
             dispatch({ type: FETCH_DATA_FAILURE, payload: { error: err}});
@@ -34,13 +37,31 @@ export const addNewSmurf = smurf => {
             height: smurf.height
         })
         .then(res => {
-            dispatch({ type: POST_DATA_SUCCESS});
-            console.log(res);
+            dispatch({ type: POST_DATA_SUCCESS, payload: {data: res.data}});
+            console.log('Posted: ', res);
         })
         .catch(err => {
             dispatch({ type: POST_DATA_FAILURE});
             console.log(err)
         });
+    }
+}
+
+export const deleteSmurf = id => {
+    return dispatch => {
+        let deleteData = new Promise((resolve, reject) =>{
+            setTimeout(() => {
+                dispatch({ type: DELETE_DATA});
+            }, 1000);
+
+            deleteData.then(res => {
+                console.log(res);
+                dispatch({ type: DELETE_DATA_SUCCESS, payload: {id: id}});
+            })
+            .catch(err => {
+                dispatch({ type: DELETE_DATA_FAILURE, payload: { error: err}});
+            })
+        })
     }
 }
 

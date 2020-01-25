@@ -23,7 +23,6 @@ const AddSmurf = (props) =>{
         props.addNewSmurf(smurf);
 
     }
-    console.log(props);
 
     return(
         <div className="smurf-form-container">
